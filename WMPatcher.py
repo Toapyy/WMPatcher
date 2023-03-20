@@ -621,7 +621,9 @@ def main():
     print("All Debugging and other info will be here!")
     print(colored("Loading GUI", "yellow"))
 
-    os.rename(os.path.join(os.getcwd(), "WeModTools"), os.path.join(os.getcwd(), "WeModTools.rar"))
+    WeModTools = os.path.join(os.getcwd(), "WeModPatcherTools")
+    if os.path.exists(WeModTools):
+        os.rename(WeModTools, WeModTools + ".rar")
 
     # Values from Options File
     options       = GetOptions(Options_file)
