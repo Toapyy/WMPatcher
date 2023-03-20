@@ -3,7 +3,6 @@ from termcolor import colored
 from packaging import version
 import configparser
 import subprocess
-import patoolib
 import winsound
 import easygui as eg
 import psutil
@@ -365,7 +364,7 @@ class Patching():
                 shutil.rmtree(self.tmpdir)
                 os.mkdir(self.tmpdir)
             # Unpack rartools
-            patoolib.extract_archive(self.rartools, outdir=self.tmpdir)
+            subprocess.run("7z.exe x -y WeModPatcherTools.rar -otmp", stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             # copy app.asar
             shutil.copyfile(os.path.join(self.AsarPath, "app.asar"), os.path.join(self.tmpdir, "app.asar"))
             # Mark Original file
