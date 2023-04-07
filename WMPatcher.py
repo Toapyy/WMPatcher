@@ -433,7 +433,7 @@ class Patching():
         if self.DevTools == True:
             self.Dev_Tools()
         # Disable updates?
-        elif self.Updates == True:
+        if self.Updates == False:
             self.dUpdates()
 
     # [||||||||||] Patch
@@ -456,7 +456,7 @@ class Patching():
                     f.write(buffer)
         if self.DevTools == True:
             self.Dev_Tools()
-        elif self.Updates == True:
+        if self.Updates == False:
             self.dUpdates()
 
     # Disable Updates
@@ -467,7 +467,7 @@ class Patching():
         try:
             with open(self.index_file, "r", encoding="ascii") as f:
                 buffer  = f.read()
-                pattern = original_func[1] if version.parse("8.5.0") >= version.parse(self.lver) else original_func[0]
+                pattern = original_func[1] if version.parse(self.lver) >= version.parse("8.5.0") else original_func[0]
                 replace = re.sub(pattern, patched_func, buffer)
             with open(self.index_file, "w", encoding="ascii") as f:
                 f.write(replace)
